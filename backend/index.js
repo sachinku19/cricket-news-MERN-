@@ -12,17 +12,19 @@ const cricketRouter=require("./routes/cricket");
 
 //make appp
 const app=express();
-app.use(express.urlencoded({ extended: true }));
 
-//db connection
-connectDB();
+
+
 
 //middleware
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use(express.urlencoded({ extended: true }));
 
 
+//db connection
+connectDB();
 
 
 app.use("/api/auth",UserRoutes);
