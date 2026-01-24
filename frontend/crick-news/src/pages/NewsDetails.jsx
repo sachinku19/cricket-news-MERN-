@@ -37,7 +37,8 @@ const NewsDetails = () => {
         <div className="details-image-wrapper">
           {news.image && (
             <img
-              src={`http://localhost:5000/uploads/${news.image}`}
+              src={`${import.meta.env.VITE_API_URL}/uploads/${news.image}`}
+
               alt={news.title}
               className="details-image"
             />
