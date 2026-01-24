@@ -34,4 +34,4 @@ app.get("/",async(req,res)=>{
     res.json({message:"hai"})
 })
 
-app.listen(process.env.PORT,()=>console.log(`server started on ${process.env.PORT}`));
+app.listen(process.env.PORT || 5000,()=>console.log(`server started on ${process.env.PORT}`));
