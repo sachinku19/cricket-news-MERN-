@@ -8,7 +8,7 @@ const UpcomingCricket = () => {
   const [timeNow, setTimeNow] = useState(Date.now());
 
   const fetchMatches = async () => {
-    const res = await API.get("/cricket/upcoming");
+    const res = await API.get("/api/cricket/upcoming");
     setmatches(res.data.data || []);
   };
 

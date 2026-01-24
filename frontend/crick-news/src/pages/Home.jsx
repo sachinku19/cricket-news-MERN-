@@ -31,7 +31,7 @@ const Home = () => {
           <div key={item._id} className="news-item">
             {item.image && (
               <img
-                src={`http://localhost:5000/uploads/${item.image}`}
+                src={`${import.meta.env.VITE_API_URL}/uploads/${news.image}`}
                 alt={item.title}
                 className="news-image"
               />
