@@ -21,7 +21,7 @@ const EditNews = () => {
     if (!id) return;
 
     const fetchSingleNews = async () => {
-      const res = await API.get(`/news/${id}`);
+      const res = await API.get(`/api/news/${id}`);
       setForm({
         title: res.data.title,
         description: res.data.description,
@@ -54,9 +54,9 @@ const EditNews = () => {
 
     try {
       if (isEditMode) {
-        await API.put(`/news/edit-news/${id}`, formData);
+        await API.put(`/api/news/edit-news/${id}`, formData);
       } else {
-        await API.post("/news/add-news", formData);
+        await API.post("/api/news/add-news", formData);
       }
 
       navigate("/admin/news");

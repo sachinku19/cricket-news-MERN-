@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await API.post("/auth/login", formData);
+      const res = await API.post("/api/auth/login", formData);
       login(res.data);
       alert("Login successful ✅");
       navigate("/");

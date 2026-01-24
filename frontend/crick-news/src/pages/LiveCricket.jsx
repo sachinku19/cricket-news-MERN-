@@ -7,7 +7,7 @@ const LiveCricket = () => {
     const [matches, setmatches] = useState([]);
 
     const fetchMatches=async()=>{
-      const res=await API.get("/cricket/live");
+      const res=await API.get("/api/cricket/live");
        setmatches(res.data.data);
     };
 

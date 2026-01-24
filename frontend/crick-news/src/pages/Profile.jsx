@@ -16,7 +16,7 @@ const Profile = () => {
 
   const fetchProfile = async () => {
     try {
-      const res = await API.get(`/auth/${user.id}`);
+      const res = await API.get(`/api/auth/${user.id}`);
       setProfile(res.data);
     } catch (error) {
       console.error("Profile fetch error:", error);

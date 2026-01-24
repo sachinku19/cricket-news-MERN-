@@ -40,7 +40,7 @@ const AddNews = () => {
     data.append("image", image);
 
     try {
-      await API.post("/news/add-news", data);
+      await API.post("/api/news/add-news", data);
 
       alert("News added successfully");
 

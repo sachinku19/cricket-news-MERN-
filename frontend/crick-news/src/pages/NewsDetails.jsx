@@ -11,7 +11,7 @@ const NewsDetails = () => {
   useEffect(() => {
     const fetchSingleNews = async () => {
       try {
-        const res = await API.get(`/news/${id}`);
+        const res = await API.get(`/api/news/${id}`);
         setNews(res.data);
       } catch (error) {
         console.error(error);

@@ -9,7 +9,7 @@ const Home = () => {
 
   const fetchNews = async () => {
     try {
-      const res = await API.get("/news");
+      const res = await API.get("/api/news");
       setNews(res.data);
     } catch (error) {
       alert("Failed to fetch news");

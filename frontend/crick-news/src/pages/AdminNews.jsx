@@ -8,7 +8,7 @@ const AdminNews = () => {
   const navigate=useNavigate();
 
   const fetchNews = async () => {
-    const res = await API.get("/news");
+    const res = await API.get("/api/news");
     setNews(res.data);
   };
 
@@ -16,7 +16,7 @@ const AdminNews = () => {
     if (!window.confirm("Delete this news?")) return;
 
     try {
-      await API.delete(`/news/delete-news/${id}`);
+      await API.delete(`/api/news/delete-news/${id}`);
       fetchNews();
     } catch (error) {
       alert("Delete failed");
