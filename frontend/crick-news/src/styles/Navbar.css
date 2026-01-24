@@ -1,0 +1,131 @@
+.navbar {
+  height: 60px;
+  padding: 0 30px;
+  background: rgba(255, 255, 255, 0.08); /* transparent glass */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  color: #3b82f6;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-item {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14.5px;
+  padding-bottom: 4px;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #e5e7eb;
+}
+
+/* 🔥 ACTIVE LINK */
+.nav-item.active {
+  color: #3b82f6;
+  border-bottom: 2px solid #3b82f6;
+}
+
+/* Buttons */
+.btn {
+  padding: 7px 14px;
+  background: #1e40af;
+  color: #e5e7eb;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3b82f6;
+}
+
+.logout-btn {
+  background: #dc2626;
+}
+
+.username {
+  color: #c7d2fe;
+  font-size: 14px;
+}
+/* Profile dropdown */
+.profile {
+  position: relative;
+}
+
+.profile-btn {
+  background: transparent;
+  border: none;
+  color: #c7d2fe;
+  font-size: 14.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-btn:hover {
+  color: #3b82f6;
+}
+
+.arrow {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.arrow.up {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  width: 140px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+   overflow: hidden;
+}
+
+/* dropdown item as link */
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  color: #e5e7eb;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+ 
+}
+
+.dropdown-item:hover {
+  background: #020f2a;
+}
+
+.dropdown-item.logout {
+  color: #f87171;
+}

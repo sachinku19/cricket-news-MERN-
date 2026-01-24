@@ -1,0 +1,13 @@
+# Backend
+backend/node_modules/
+backend/.env
+
+# Frontend
+frontend/crick-news/node_modules/
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store

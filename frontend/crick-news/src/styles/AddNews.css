@@ -1,0 +1,155 @@
+/* ===== Add News Page ===== */
+
+.add-news-container {
+  min-height: calc(100vh - 60px);
+  padding: 96px 16px 40px;
+
+  background:
+    radial-gradient(circle at top, #020f2a, #020617 70%),
+    linear-gradient(180deg, rgba(59,130,246,0.06), transparent);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: #e5e7eb;
+  animation: fadeInPage 0.6s ease forwards;
+}
+
+/* ===== Title ===== */
+.add-news-container h2 {
+  margin-bottom: 32px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #60a5fa;
+  letter-spacing: 0.5px;
+
+  opacity: 0;
+  animation: slideDown 0.6s ease forwards;
+}
+
+/* ===== Form ===== */
+.add-news-form {
+  width: 100%;
+  max-width: 520px;
+
+  background: rgba(2, 6, 23, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border-radius: 20px;
+  padding: 38px;
+
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.75);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: cardReveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.15s;
+}
+
+/* ===== Inputs & Select ===== */
+.add-news-form input,
+.add-news-form textarea,
+.add-news-form select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #e5e7eb;
+
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+
+  outline: none;
+  transition:
+    border 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.add-news-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Focus state */
+.add-news-form input:focus,
+.add-news-form textarea:focus,
+.add-news-form select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.45);
+  background: rgba(15, 23, 42, 1);
+}
+
+/* File input */
+.add-news-form input[type="file"] {
+  padding: 10px;
+  cursor: pointer;
+  color: #94a3b8;
+}
+
+/* ===== Button ===== */
+.add-news-form button {
+  margin-top: 8px;
+  padding: 13px 0;
+
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+
+  border-radius: 14px;
+  border: 1px solid #3b82f6;
+
+  background: rgba(2, 6, 23, 0.95);
+  color: #60a5fa;
+
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.add-news-form button:hover {
+  background: rgba(59, 130, 246, 0.18);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInPage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 520px) {
+  .add-news-form {
+    padding: 22px;
+  }
+}

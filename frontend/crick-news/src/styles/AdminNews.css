@@ -1,0 +1,160 @@
+/* ===== Admin Manage News Page ===== */
+
+.admin-container {
+  min-height: calc(100vh - 60px);
+  padding-top: 84px;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  background: radial-gradient(circle at top, #020f2a, #020617 65%);
+  color: #e5e7eb;
+
+  animation: fadeInPage 0.7s ease forwards;
+}
+
+/* Title */
+.admin-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #60a5fa;
+  letter-spacing: 0.4px;
+
+  opacity: 0;
+  animation: slideDown 0.6s ease forwards;
+}
+
+/* ===== News List ===== */
+.admin-news-list {
+  max-width: 1100px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* ===== News Card ===== */
+.admin-news-card {
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 16px;
+  padding: 20px;
+
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  animation: cardReveal 0.6s ease forwards;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border 0.35s ease;
+}
+
+/* Ordinal animation */
+.admin-news-card:nth-child(1) { animation-delay: 0.1s; }
+.admin-news-card:nth-child(2) { animation-delay: 0.2s; }
+.admin-news-card:nth-child(3) { animation-delay: 0.3s; }
+.admin-news-card:nth-child(4) { animation-delay: 0.4s; }
+.admin-news-card:nth-child(5) { animation-delay: 0.5s; }
+.admin-news-card:nth-child(6) { animation-delay: 0.6s; }
+
+.admin-news-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(59, 130, 246, 0.55);
+}
+
+/* Title */
+.admin-news-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+/* Category */
+.admin-news-card .category {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* ===== Actions ===== */
+.admin-news-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 12px;
+}
+
+/* Buttons */
+.admin-btn {
+  padding: 8px 16px;
+  font-size: 13px;
+  border-radius: 10px;
+  border: 1px solid #1e293b;
+
+  background: rgba(2, 6, 23, 0.9);
+  color: #e5e7eb;
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.admin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* Danger */
+.admin-btn.danger {
+  border-color: #ef4444;
+  color: #f87171;
+}
+
+.admin-btn.danger:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInPage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .admin-news-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,134 @@
+/* ===== Profile Page ===== */
+
+.profile-container {
+  min-height: calc(100vh - 60px);
+  padding-top: 84px;
+  background: radial-gradient(circle at top, #020f2a, #020617 65%);
+  color: #e5e7eb;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  animation: fadeInPage 0.7s ease forwards;
+}
+
+/* Page title */
+.profile-container h2 {
+  margin-bottom: 26px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #60a5fa;
+  letter-spacing: 0.4px;
+
+  opacity: 0;
+  animation: slideDown 0.6s ease forwards;
+}
+
+/* ===== Profile Card (Glass) ===== */
+.profile-card {
+  width: 360px;
+
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 16px;
+  padding: 26px;
+
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.6);
+
+  opacity: 0;
+  transform: translateY(26px) scale(0.95);
+  animation: cardReveal 0.7s ease forwards;
+  animation-delay: 0.2s;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border 0.35s ease;
+}
+
+/* Glow on hover */
+.profile-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(59, 130, 246, 0.55);
+}
+
+/* ===== Profile Info ===== */
+.profile-card p {
+  margin-bottom: 14px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: textReveal 0.5s ease forwards;
+}
+
+/* Ordinal text animation */
+.profile-card p:nth-child(1) { animation-delay: 0.35s; }
+.profile-card p:nth-child(2) { animation-delay: 0.45s; }
+.profile-card p:nth-child(3) { animation-delay: 0.55s; }
+.profile-card p:nth-child(4) { animation-delay: 0.65s; }
+
+.profile-card span {
+  color: #94a3b8;
+}
+
+/* ===== Loading State ===== */
+.loading {
+  padding-top: 120px;
+  text-align: center;
+  font-size: 15px;
+  color: #94a3b8;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInPage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes textReveal {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 420px) {
+  .profile-card {
+    width: 92%;
+  }
+}
