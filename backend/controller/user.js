@@ -2,109 +2,112 @@ const User = require("../model/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-//--handle signup
+/* =====================
+   USER SIGNUP
+===================== */
 const userSignup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+
     if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
-    const user = await User.findOne({ email });
-    if (user) {
-      return res.status(409).json({ message: "Email Allready Regestred" });
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(409).json({ message: "Email already registered" });
     }
 
-    //password hashed
-    const hash_Password = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = await User.create({
+    const user = await User.create({
       name,
       email,
-      password: hash_Password,
+      password: hashedPassword,
     });
 
     const token = jwt.sign(
-      { id: newUser._id, email: newUser.email,role:newUser.role},
+      { id: user._id, role: user.role },
       process.env.SECRET_KEY,
-      { expiresIn: "7d" },
+      { expiresIn: "7d" }
     );
 
     res.status(201).json({
-      message: "User Signup Successfully",
+      message: "Signup successful",
       token,
-      user: { id: newUser._id, name: newUser.name, email: newUser.email,role:newUser.role },
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
     });
   } catch (error) {
-    return res.status(500).json({ message: "signup Fialed" });
+    console.error("SIGNUP ERROR:", error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
 /* =====================
    USER LOGIN
 ===================== */
-
 const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
+
     if (!email || !password) {
-      return res.status(400).json({ message: "all fields are required" });
+      return res.status(400).json({ message: "All fields are required" });
     }
-   const user=await User.findOne({ email }).select("+password");
 
+    const user = await User.findOne({ email }).select("+password");
     if (!user) {
-      return res.status(404).json({ message: "User Does not exist" });
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    const password_matched = await bcrypt.compare(password, user.password);
-
-    if (!password_matched) {
-      return res.status(401).json({ message: "Wrong Password" });
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
     const token = jwt.sign(
-      { id: user._id, email: user.email,role:user.role},
+      { id: user._id, role: user.role },
       process.env.SECRET_KEY,
-      { expiresIn: "7d" },
+      { expiresIn: "7d" }
     );
 
-    return res.status(200).json({
-      message: "Login Success",
+    res.status(200).json({
+      message: "Login successful",
       token,
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
-        role:user.role
+        role: user.role,
       },
     });
   } catch (error) {
-    return res.status(500).json({ message: "Login failded" });
+    console.error("LOGIN ERROR:", error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
 /* =====================
-   GET USER (PROFILE)
+   USER PROFILE
 ===================== */
-
 const getUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.params.id).select("-password");
     if (!user) {
-      return res.status(404).json({
-        message: "User not found",
-      });
+      return res.status(404).json({ message: "User not found" });
     }
-
     res.json(user);
   } catch (error) {
-    res.status(400).json({
-      message: "Invalid user ID",
-    });
+    res.status(400).json({ message: "Invalid user ID" });
   }
 };
 
 module.exports = {
   userSignup,
   userLogin,
-  getUserProfile
+  getUserProfile,
 };
