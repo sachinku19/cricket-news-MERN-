@@ -1,4 +1,6 @@
 const express = require("express");
+const router = express.Router();
+
 const {
   addNews,
   getAllnews,
@@ -11,12 +13,36 @@ const upload = require("../middleware/image_upload");
 const authMiddleware = require("../middleware/authMiddleware");
 const adminMiddleware = require("../middleware/adminMiddleware");
 
-const router = express.Router();
+// ADD NEWS (ADMIN)
+router.post(
+  "/add-news",
+  authMiddleware,
+  adminMiddleware,
+  upload.single("image"),
+  addNews
+);
 
-router.post("/add-news", authMiddleware, adminMiddleware,upload.single("image"), addNews);
+// GET ALL NEWS (PUBLIC)
 router.get("/", getAllnews);
+
+// GET SINGLE NEWS (PUBLIC)
 router.get("/:id", single_news);
-router.put("/edit-news/:id", authMiddleware, adminMiddleware,upload.single("image"), update_news);
-router.delete("/delete-news/:id", authMiddleware, adminMiddleware, delete_news);
+
+// UPDATE NEWS (ADMIN)
+router.put(
+  "/edit-news/:id",
+  authMiddleware,
+  adminMiddleware,
+  upload.single("image"),
+  update_news
+);
+
+// DELETE NEWS (ADMIN)
+router.delete(
+  "/delete-news/:id",
+  authMiddleware,
+  adminMiddleware,
+  delete_news
+);
 
 module.exports = router;
