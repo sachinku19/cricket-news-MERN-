@@ -38,9 +38,10 @@ app.get("/",async(req,res)=>{
 app.use(express.static(path.join(__dirname, "dist")));
 
 // React Router fallback (IMPORTANT)
-app.get("/*", (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
+
 
 
 app.listen(process.env.PORT || 5000,()=>console.log(`server started on ${process.env.PORT}`));
