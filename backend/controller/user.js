@@ -35,7 +35,7 @@ const userSignup = async (req, res) => {
       user: { id: newUser._id, name: newUser.name, email: newUser.email,role:newUser.role },
     });
   } catch (error) {
-    return res.status(500).json({ message: "signup Fialed" });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -78,7 +78,7 @@ const userLogin = async (req, res) => {
       },
     });
   } catch (error) {
-    return res.status(500).json({ message: "Login failded" });
+    return res.status(500).json({ message:error.message });
   }
 };
 
