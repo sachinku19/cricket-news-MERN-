@@ -31,12 +31,12 @@ const Home = () => {
           <div key={item._id} className="news-item">
             {item.image && (
               <img
-                src={`${import.meta.env.VITE_API_URL}/uploads/${item.image}`}
+                src={item.image}   // ✅ FIXED
                 alt={item.title}
                 className="news-image"
               />
             )}
-            
+
             <div className="news-content">
               <h3 className="news-title">{item.title}</h3>
               <h4 className="news-category">{item.category}</h4>
@@ -47,7 +47,7 @@ const Home = () => {
               </p>
               <button
                 className="details-btn"
-                onClick={() =>  navigate(`/news/${item._id}`)}
+                onClick={() => navigate(`/news/${item._id}`)}
               >
                 Details
               </button>

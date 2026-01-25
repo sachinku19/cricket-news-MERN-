@@ -32,12 +32,11 @@ const NewsDetails = () => {
   return (
     <div className="news-details-container">
       <div className="details-layout">
-
         {/* Sticky Image */}
         <div className="details-image-wrapper">
           {news.image && (
             <img
-              src={`${import.meta.env.VITE_API_URL}/uploads/${news.image}`}
+              src={news.image}  // ✅ FIXED
               alt={news.title}
               className="details-image"
             />

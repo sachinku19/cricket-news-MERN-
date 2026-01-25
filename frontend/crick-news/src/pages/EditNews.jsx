@@ -4,42 +4,57 @@ import API from "../services/News_Api";
 import "../styles/Editnews.css";
 
 const EditNews = () => {
-  const { id } = useParams(); // 👈 if id exists → edit mode
+  const { id } = useParams();
   const navigate = useNavigate();
+
+  const isEditMode = Boolean(id);
 
   const [form, setForm] = useState({
     title: "",
     description: "",
     category: "",
     image: null,
+    imagePreview: "",
   });
 
-  const isEditMode = Boolean(id);
-
-  /* ================= LOAD NEWS FOR EDIT ================= */
+  /* ================= LOAD NEWS (EDIT MODE) ================= */
   useEffect(() => {
-    if (!id) return;
+    if (!isEditMode) return;
 
     const fetchSingleNews = async () => {
-      const res = await API.get(`/api/news/${id}`);
-      setForm({
-        title: res.data.title,
-        description: res.data.description,
-        category: res.data.category,
-        image: null, // image optional
-      });
+      try {
+        const res = await API.get(`/api/news/${id}`);
+        setForm({
+          title: res.data.title,
+          description: res.data.description,
+          category: res.data.category,
+          image: null,
+          imagePreview: res.data.image, // ✅ Cloudinary URL
+        });
+      } catch (err) {
+        alert("Failed to load news");
+      }
     };
 
     fetchSingleNews();
-  }, [id]);
+  }, [id, isEditMode]);
 
   /* ================= HANDLE CHANGE ================= */
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    setForm({
-      ...form,
-      [name]: files ? files[0] : value,
-    });
+
+    if (files) {
+      setForm({
+        ...form,
+        image: files[0],
+        imagePreview: URL.createObjectURL(files[0]),
+      });
+    } else {
+      setForm({
+        ...form,
+        [name]: value,
+      });
+    }
   };
 
   /* ================= SUBMIT ================= */
@@ -50,7 +65,10 @@ const EditNews = () => {
     formData.append("title", form.title);
     formData.append("description", form.description);
     formData.append("category", form.category);
-    if (form.image) formData.append("image", form.image);
+
+    if (form.image) {
+      formData.append("image", form.image);
+    }
 
     try {
       if (isEditMode) {
@@ -98,7 +116,22 @@ const EditNews = () => {
 
         <input type="file" name="image" onChange={handleChange} />
 
-        <button className="admin-btn primary">
+        {/* IMAGE PREVIEW */}
+        {form.imagePreview && (
+          <img
+            src={form.imagePreview}
+            alt="Preview"
+            className="preview-image"
+          />
+        )}
+
+        {isEditMode && (
+          <p className="hint-text">
+            Leave image empty to keep existing image
+          </p>
+        )}
+
+        <button className="admin-btn primary" type="submit">
           {isEditMode ? "Update News" : "Add News"}
         </button>
       </form>

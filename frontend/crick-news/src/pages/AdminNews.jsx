@@ -5,11 +5,15 @@ import "../styles/AdminNews.css";
 
 const AdminNews = () => {
   const [news, setNews] = useState([]);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const fetchNews = async () => {
-    const res = await API.get("/api/news");
-    setNews(res.data);
+    try {
+      const res = await API.get("/api/news");
+      setNews(res.data);
+    } catch (err) {
+      alert("Failed to load news");
+    }
   };
 
   const deleteNews = async (id) => {
@@ -34,10 +38,19 @@ const AdminNews = () => {
       <div className="admin-news-list">
         {news.map((item) => (
           <div className="admin-news-card" key={item._id}>
-            <h4>{item.title}</h4>
-             <p className="category">{item.category}</p>
+            {/* IMAGE PREVIEW */}
+            {item.image && (
+              <img
+                src={item.image}   // ✅ Cloudinary URL
+                alt={item.title}
+                className="admin-news-image"
+              />
+            )}
 
-          <div className="admin-news-actions">
+            <h4>{item.title}</h4>
+            <p className="category">{item.category}</p>
+
+            <div className="admin-news-actions">
               <button
                 className="admin-btn"
                 onClick={() => navigate(`/admin/edit-news/${item._id}`)}

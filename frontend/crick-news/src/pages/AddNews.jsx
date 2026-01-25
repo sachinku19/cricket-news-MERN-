@@ -10,19 +10,25 @@ const AddNews = () => {
   });
 
   const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState(null);
+  const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(false);
 
+  /* ================= TEXT CHANGE ================= */
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  /* ================= IMAGE CHANGE ================= */
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+
+    if (!file) return;
+
     setImage(file);
-    if (file) setPreview(URL.createObjectURL(file));
+    setPreview(URL.createObjectURL(file));
   };
 
+  /* ================= SUBMIT ================= */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,17 +43,18 @@ const AddNews = () => {
     data.append("title", formData.title);
     data.append("description", formData.description);
     data.append("category", formData.category);
-    data.append("image", image);
+    data.append("image", image); // ✅ Cloudinary
 
     try {
       await API.post("/api/news/add-news", data);
 
       alert("News added successfully");
 
+      // 🔥 RESET FORM
       setFormData({ title: "", description: "", category: "" });
       setImage(null);
-      setPreview(null);
-      e.target.reset(); // 🔥 reset file input
+      setPreview("");
+      e.target.reset();
     } catch (error) {
       alert(error.response?.data?.message || "Failed to add news");
     } finally {
@@ -102,6 +109,7 @@ const AddNews = () => {
           required
         />
 
+        {/* IMAGE PREVIEW */}
         {preview && (
           <img src={preview} alt="Preview" className="image-preview" />
         )}
