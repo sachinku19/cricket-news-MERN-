@@ -13,7 +13,7 @@ const addNews = async (req, res) => {
       title,
       description,
       category,
-      image: req.file.filename,
+      image: req.file.path, // ✅ Cloudinary URL
     });
 
     res.status(201).json(news);
@@ -60,7 +60,7 @@ const update_news = async (req, res) => {
       title: req.body.title || news.title,
       description: req.body.description || news.description,
       category: req.body.category || news.category,
-      image: req.file ? req.file.filename : news.image,
+      image: req.file ? req.file.path : news.image, // ✅ FIXED
     };
 
     const updated = await News.findByIdAndUpdate(
