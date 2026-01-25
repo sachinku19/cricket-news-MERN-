@@ -38,7 +38,6 @@ const NewsDetails = () => {
           {news.image && (
             <img
               src={`${import.meta.env.VITE_API_URL}/uploads/${news.image}`}
-
               alt={news.title}
               className="details-image"
             />
