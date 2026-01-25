@@ -32,16 +32,15 @@ const NewsDetails = () => {
   return (
     <div className="news-details-container">
       <div className="details-layout">
+
         {/* Sticky Image */}
         <div className="details-image-wrapper">
           {news.image && (
             <img
-              src={
-                item.image
-                  ? `${import.meta.env.VITE_API_URL}/uploads/${item.image}`
-                  : "/no-image.png"
-              }
-              alt={item.title}
+              src={`${import.meta.env.VITE_API_URL}/uploads/${news.image}`}
+
+              alt={news.title}
+              className="details-image"
             />
           )}
         </div>
