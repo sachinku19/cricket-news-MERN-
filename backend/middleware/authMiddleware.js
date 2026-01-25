@@ -9,9 +9,11 @@ const authMiddleware = (req, res, next) => {
     }
 
     const token = authHeader.split(" ")[1];
+
+    // ✅ USE JWT_SECRET (Render-compatible)
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    req.user = decoded; // MUST contain role
+    req.user = decoded;
     next();
   } catch (error) {
     console.error("Auth error:", error.message);
