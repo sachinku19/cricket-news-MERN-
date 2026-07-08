@@ -1,0 +1,375 @@
+/* ===== Premium Cricket Teams & Rankings Portal Styling ===== */
+
+.teams-header-section {
+  max-width: 1200px;
+  margin: 0 auto 30px auto;
+  text-align: center;
+}
+
+.teams-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(to right, #ffffff, #cbd5e1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.teams-sub {
+  color: var(--text-secondary);
+  font-size: 14.5px;
+}
+
+/* Search Bar design options */
+.teams-search-row {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto 40px auto;
+}
+
+.teams-search-form {
+  display: flex;
+  gap: 10px;
+}
+
+.teams-search-form .search-input {
+  flex-grow: 1;
+  padding: 12px 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 13.5px;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.teams-search-form .search-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.teams-search-form .search-btn {
+  padding: 12px 24px;
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.teams-search-form .search-btn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+}
+
+/* Search results sections */
+.search-results-section {
+  max-width: 600px;
+  width: 100%;
+  margin: -20px auto 40px auto;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.search-results-section h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #60a5fa;
+}
+
+.search-results-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.search-player-card {
+  padding: 12px 18px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-player-card:hover {
+  border-color: var(--border-focus);
+  transform: translateX(4px);
+}
+
+.search-player-card h4 {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.search-player-card small {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+.clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.clear-btn:hover {
+  color: var(--text-primary);
+}
+
+/* ===== Teams Grid list ===== */
+.teams-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+/* Card layout details */
+.team-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardFadeIn 0.5s ease forwards;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-focus);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.08);
+}
+
+/* Delay staggered */
+.team-card:nth-child(1) { animation-delay: 0.05s; }
+.team-card:nth-child(2) { animation-delay: 0.1s; }
+.team-card:nth-child(3) { animation-delay: 0.15s; }
+
+.team-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flag-icon {
+  font-size: 32px;
+}
+
+.team-fav-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.team-fav-btn:hover {
+  color: var(--accent);
+}
+
+.team-fav-btn.active {
+  color: var(--accent);
+}
+
+.team-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.team-ranks {
+  display: flex;
+  justify-content: space-between;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.team-ranks div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.team-ranks span {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.team-ranks strong {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.view-squad-btn {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.view-squad-btn:hover {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* ===== Squad Modal Overlay details ===== */
+.squad-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1010;
+  padding: 16px;
+}
+
+.squad-modal-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  animation: modalScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--text-primary);
+}
+
+.modal-body {
+  padding: 20px 24px 28px 24px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.modal-players-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-player-row {
+  padding: 12px 16px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-player-row:hover {
+  border-color: var(--border-focus);
+  transform: translateX(4px);
+}
+
+.modal-player-row strong {
+  display: block;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.role-lbl {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.modal-player-row .arrow {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.modal-player-row:hover .arrow {
+  color: var(--primary);
+}

@@ -32,12 +32,17 @@ const Navbar = () => {
       
         <li>
           <NavLink to="/live-match" end className="nav-item">
-            Live
+            Live Matches
           </NavLink>
         </li>
-         <li>
-          <NavLink to="/upcoming-match" end className="nav-item">
-            Upcoming
+        <li>
+          <NavLink to="/fixtures" end className="nav-item">
+            Schedules
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/teams" end className="nav-item">
+            Teams & Ranks
           </NavLink>
         </li>
         

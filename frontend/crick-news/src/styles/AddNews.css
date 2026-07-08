@@ -1,143 +1,50 @@
-/* ===== Add News Page ===== */
+/* ===== Premium Glassmorphic Form - Add News Styling ===== */
 
 .add-news-container {
-  min-height: calc(100vh - 60px);
-  padding: 96px 16px 40px;
-
-  background:
-    radial-gradient(circle at top, #020f2a, #020617 70%),
-    linear-gradient(180deg, rgba(59,130,246,0.06), transparent);
-
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0b1528, #030712 70%);
+  padding: 40px 24px;
+  padding-top: 100px;
+  color: var(--text-primary);
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  color: #e5e7eb;
-  animation: fadeInPage 0.6s ease forwards;
 }
 
-/* ===== Title ===== */
-.add-news-container h2 {
-  margin-bottom: 32px;
-  font-size: 26px;
-  font-weight: 600;
-  color: #60a5fa;
-  letter-spacing: 0.5px;
-
-  opacity: 0;
-  animation: slideDown 0.6s ease forwards;
+/* Page title */
+.add-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #ffffff, #cbd5e1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
 }
 
-/* ===== Form ===== */
+/* Form Container Card */
 .add-news-form {
+  max-width: 600px;
   width: 100%;
-  max-width: 520px;
-
-  background: rgba(2, 6, 23, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-
-  border-radius: 20px;
-  padding: 38px;
-
-  border: 1px solid rgba(59, 130, 246, 0.4);
-  box-shadow:
-    0 22px 60px rgba(0, 0, 0, 0.75);
-
+  padding: 40px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  
   display: flex;
   flex-direction: column;
-  gap: 16px;
-
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+  
   opacity: 0;
-  transform: translateY(30px) scale(0.95);
-  animation: cardReveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.15s;
-}
-
-/* ===== Inputs & Select ===== */
-.add-news-form input,
-.add-news-form textarea,
-.add-news-form select {
-  width: 100%;
-  padding: 12px 14px;
-  font-size: 14px;
-  color: #e5e7eb;
-
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid #1e293b;
-  border-radius: 12px;
-
-  outline: none;
-  transition:
-    border 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
-}
-
-.add-news-form textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-/* Focus state */
-.add-news-form input:focus,
-.add-news-form textarea:focus,
-.add-news-form select:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.45);
-  background: rgba(15, 23, 42, 1);
-}
-
-/* File input */
-.add-news-form input[type="file"] {
-  padding: 10px;
-  cursor: pointer;
-  color: #94a3b8;
-}
-
-/* ===== Button ===== */
-.add-news-form button {
-  margin-top: 8px;
-  padding: 13px 0;
-
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-
-  border-radius: 14px;
-  border: 1px solid #3b82f6;
-
-  background: rgba(2, 6, 23, 0.95);
-  color: #60a5fa;
-
-  cursor: pointer;
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.add-news-form button:hover {
-  background: rgba(59, 130, 246, 0.18);
-  transform: translateY(-3px);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
-}
-
-/* ===== Animations ===== */
-@keyframes fadeInPage {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  transform: translateY(26px) scale(0.96);
+  animation: cardReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes cardReveal {
@@ -147,9 +54,145 @@
   }
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 520px) {
+/* Inputs styling and select options */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.add-news-form input[type="text"],
+.add-news-form select,
+.add-news-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.add-news-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 40px;
+}
+
+.add-news-form select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.add-news-form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.add-news-form input:focus,
+.add-news-form select:focus,
+.add-news-form textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* File selector box */
+.file-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.add-news-form input[type="file"] {
+  background: var(--bg-tertiary);
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 18px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  width: 100%;
+  font-size: 13.5px;
+}
+
+.add-news-form input[type="file"]:hover {
+  border-color: var(--primary);
+}
+
+/* Image preview section */
+.preview-container {
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 16px;
+  background: var(--bg-tertiary);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.preview-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.image-preview {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Publish btn control */
+.publish-btn {
+  padding: 14px;
+  background: var(--primary-gradient);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  margin-top: 10px;
+}
+
+.publish-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+}
+
+.publish-btn:disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  border: 1px solid var(--border-color);
+}
+
+/* Responsive details */
+@media (max-width: 600px) {
   .add-news-form {
-    padding: 22px;
+    padding: 30px 20px;
+    border-radius: 18px;
+  }
+  .add-title {
+    font-size: 26px;
   }
 }

@@ -9,6 +9,7 @@ const UserRoutes=require("./routes/user");
 const NewsRouter=require("./routes/news");
 const adminRoute=require("./routes/Admin");
 const cricketRouter=require("./routes/cricket");
+const favoritesRouter=require("./routes/favorites");
 
 //make appp
 const app=express();
@@ -30,6 +31,7 @@ app.use("/api/auth",UserRoutes);
 app.use("/api/news",NewsRouter);
 app.use("/api/admin",adminRoute);
 app.use("/api/cricket",cricketRouter);
+app.use("/api/user",favoritesRouter);
 
 app.get("/",async(req,res)=>{
     res.json({message:"hai"})

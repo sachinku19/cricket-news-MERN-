@@ -10,9 +10,15 @@ import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminNews from "./pages/AdminNews";
 import EditNews from "./pages/EditNews";
-import NewsDetails from "./pages/NewsDetails";
 import LiveCricket from "./pages/LiveCricket";
 import UpcomingCricket from "./pages/UpcomingCricket";
+import NewsDetails from "./pages/NewsDetails";
+
+// TypeScript premium additions
+import MatchDetails from "./pages/MatchDetails";
+import PlayerProfile from "./pages/PlayerProfile";
+import TeamsPortal from "./pages/TeamsPortal";
+import CalendarSchedule from "./pages/CalendarSchedule";
 
 const App = () => {
   return (
@@ -25,6 +31,27 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/live-match" element={<LiveCricket/>}/>
           <Route path="/upcoming-match" element={<UpcomingCricket/>}/>
+          <Route path="/fixtures" element={<CalendarSchedule />} />
+          <Route path="/teams" element={<TeamsPortal />} />
+          
+          <Route
+            path="/match/:id"
+            element={
+              <ProtectedRoute>
+                <MatchDetails />
+              </ProtectedRoute>
+            }
+          />
+          
+          <Route
+            path="/player/:id"
+            element={
+              <ProtectedRoute>
+                <PlayerProfile />
+              </ProtectedRoute>
+            }
+          />
+
           {/* Protected user route */}
           <Route
             path="/news/:id"

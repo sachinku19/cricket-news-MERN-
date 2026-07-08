@@ -1,0 +1,443 @@
+/* ===== Premium Cricket Scorecard Page Styling ===== */
+
+.match-detail-header-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Bookmark Active/Hover states */
+.bookmark-toggle-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 99px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.bookmark-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-focus);
+}
+
+.bookmark-toggle-btn.active {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--accent);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+/* Match main banner header card */
+.match-banner-card {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto 30px auto;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.match-banner-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.banner-type-badge {
+  padding: 3px 10px;
+  background: var(--primary-gradient);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.banner-venue {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.banner-teams {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.banner-status {
+  font-size: 14.5px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Live score display sections */
+.banner-scores-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.banner-score-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.banner-inning-lbl {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  min-width: 120px;
+}
+
+.banner-inning-score {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.banner-inning-score small {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.banner-rr {
+  font-size: 13px;
+  color: var(--success);
+  font-weight: 600;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Win Probability graph styles */
+.win-probability-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.win-prob-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.win-prob-bar-container {
+  height: 24px;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  background: var(--bg-tertiary);
+}
+
+.win-prob-fill {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  transition: width 0.5s ease-in-out;
+}
+
+.win-prob-fill.team-1 {
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+}
+
+.win-prob-fill.team-2 {
+  background: linear-gradient(90deg, #ea580c, #f97316);
+}
+
+.win-prob-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Tab bar selection */
+.match-tabs-bar {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto 24px auto;
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 12px 24px;
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.tab-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-gradient);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.tab-btn.active {
+  color: var(--text-primary);
+}
+
+.tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+/* Panels */
+.tab-panel-container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.empty-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14.5px;
+}
+
+/* Scorecard panels innings info */
+.inning-details-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.inning-detail-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.inning-card-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #60a5fa;
+}
+
+.score-summary-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+}
+
+.score-summary-grid .metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.score-summary-grid .lbl {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.score-summary-grid .val {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Squad Lists */
+.squads-grid-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.team-squad-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.team-squad-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #60a5fa;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 10px;
+}
+
+.squad-players-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.player-row-clickable {
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.player-row-clickable:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-focus);
+  transform: translateX(4px);
+}
+
+.p-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.p-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.p-role {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+.view-profile-arrow {
+  color: var(--text-muted);
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.player-row-clickable:hover .view-profile-arrow {
+  color: var(--primary);
+}
+
+/* Info Panel Layouts */
+.info-grid-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #60a5fa;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.info-row .lbl {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.info-row .val {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: right;
+  max-width: 65%;
+}
+
+/* Spinner small */
+.spinner-small {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  margin: 20px auto;
+}
+
+/* Responsive options */
+@media (max-width: 768px) {
+  .squads-grid-box {
+    grid-template-columns: 1fr;
+  }
+  .banner-teams {
+    font-size: 22px;
+  }
+}
