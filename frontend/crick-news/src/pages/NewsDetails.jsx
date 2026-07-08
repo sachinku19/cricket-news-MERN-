@@ -4,6 +4,8 @@ import API from "../services/News_Api";
 import { useToast } from "../context/ToastContext";
 import "../styles/NewsDetail.css";
 
+const FALLBACK_IMAGE = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%"><rect width="800" height="450" fill="%230f172a"/><circle cx="400" cy="225" r="120" stroke="%231e293b" stroke-width="6" fill="none" opacity="0.5"/><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, sans-serif" font-size="36" font-weight="bold" fill="%233b82f6" opacity="0.8">CRICKETZONE</text></svg>`;
+
 const NewsDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -265,7 +267,7 @@ const NewsDetails = () => {
                       alt={item.title}
                       onError={(e) => {
                         e.currentTarget.onerror = null;
-                        e.currentTarget.src = "https://images.unsplash.com/photo-1540747737956-37872404a821?auto=format&fit=crop&w=800&q=80";
+                        e.currentTarget.src = FALLBACK_IMAGE;
                       }}
                     />
                   ) : (
